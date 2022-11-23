@@ -14,14 +14,13 @@ public class MainController {
 
     @GetMapping("/")
     public String getQRCode(Model model){
-        String medium="https://rahul26021999.medium.com/";
-        String github="https://github.com/rahul26021999";
+        String github="https://github.com/mukhamaw-mm";
 
         byte[] image = new byte[0];
         try {
 
             // Generate and Return Qr Code in Byte Array
-            image = QRCodeGenerator.getQRCodeImage(medium,250,250);
+            image = QRCodeGenerator.getQRCodeImage(github,250,250);
 
             // Generate and Save Qr Code Image in static/image folder
             QRCodeGenerator.generateQRCodeImage(github,250,250,QR_CODE_IMAGE_PATH);
@@ -32,7 +31,6 @@ public class MainController {
         // Convert Byte Array into Base64 Encode String
         String qrcode = Base64.getEncoder().encodeToString(image);
 
-        model.addAttribute("medium",medium);
         model.addAttribute("github",github);
         model.addAttribute("qrcode",qrcode);
 
